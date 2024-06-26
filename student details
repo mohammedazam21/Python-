@@ -1,0 +1,36 @@
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+        self.average = sum(marks) / len(marks)   
+        
+    def __repr__(self):
+        return "Student(name={self.name}, marks={self.marks}, average={self.average})"
+        
+def print_min_max_average(students):    
+    min_student = min(students, key=lambda student: student.average)
+    print("Student with minimum average: {min_student.name} (Average: {min_student.average})")    
+    max_student = max(students, key=lambda student: student.average)
+    print("Student with maximum average: {max_student.name} (Average: {max_student.average})")
+
+def print_rank_wise(students):
+    ranked_students = sorted(students, key=lambda student: student.average, reverse=True)
+    print("Rank-wise students:")
+    for rank, student in enumerate(ranked_students, start=1):
+        print("Rank {rank}: {student.name} (Average: {student.average})")
+        
+if __name__ == "__main__":
+    students = [
+        Student("abhilash", [80, 75, 90]),
+        Student("Bharath", [85, 79, 92]),
+        Student("Charan", [90, 82, 95]),
+        Student("Dravid", [78, 80, 85]),
+        Student("jadeja", [88, 92, 89]),
+        Student("ashwin", [82, 88, 90]),
+        Student("ganguli", [85, 79, 84]),
+        Student("Hemanth", [90, 95, 92]),
+        Student("virat", [86, 83, 87]),
+        Student("dhoni", [92, 91, 90])
+]
+    print_min_max_average(students)
+    print_rank_wise(students)
